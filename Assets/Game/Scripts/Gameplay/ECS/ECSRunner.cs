@@ -11,6 +11,7 @@ using Game.Scripts.Gameplay.ECS.Rigidbody;
 using Game.Scripts.Gameplay.ECS.Rotate;
 using Game.Scripts.Gameplay.ECS.SendMessage;
 using Game.Scripts.Gameplay.ECS.Spawn;
+using Game.Scripts.Gameplay.ECS.Tail;
 using Leopotam.Ecs;
 using Leopotam.Ecs.UnityIntegration;
 using UnityEngine;
@@ -42,6 +43,7 @@ namespace Game.Scripts.Gameplay.ECS
         .Add(new SpawnFeature())
         .Add(new MoveFeature())
         .Add(new RotateFeature())
+        .Add(new TailFeature())
         .Add(new DamageFeature())
         .Add(new HealthFeature())
         .Add(new SendMessageFeature())
