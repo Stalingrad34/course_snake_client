@@ -29,13 +29,10 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
 
         if (_eventFilter.Get1(i).IsPlayer)
         {
-          head.gameObject.AddComponent<ControlConverter>();
-          head.gameObject.AddComponent<SendDataConverter>();
           head.SetCamera(_mainCamera);
-        }
-        else
-        {
-          head.gameObject.AddComponent<ServerPlayerConverter>();
+          var aim = AssetProvider.GetPlayerAimView();
+          aim.Setup(headData);
+          aim.transform.position = _eventFilter.Get1(i).Position;
         }
 
         CreateSpawnSnakePartEvent(headData.Id, _eventFilter.Get1(i).Position, "Tail");

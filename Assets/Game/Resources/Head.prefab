@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6922495815291124947}
   - component: {fileID: 5463833454282687023}
   - component: {fileID: 4785824120824029530}
+  - component: {fileID: 6584858175586221885}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -162,6 +163,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038ea74d3b714cd2a03a0ec7f946b6be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.IdentifierConverter
+--- !u!114 &6584858175586221885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4024664506966423443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f40c32f87bc4278b72593ac482c2414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.ECS.Converters.ServerPlayerConverter
 --- !u!1 &7503476030032582848
 GameObject:
   m_ObjectHideFlags: 0

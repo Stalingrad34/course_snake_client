@@ -23,26 +23,26 @@ namespace Game.Scripts.Infrastructure
             return GetResource<MultiplayerManager>($"{nameof(MultiplayerManager)}");
         }
 
-        public static SnakeHeadView GetSnakeHeadView()
-        {
-            return GetResource<SnakeHeadView>("Head");
-        }
-        
-        public static SnakeTailView GetSnakeTailView()
-        {
-            return GetResource<SnakeTailView>("Tail");
-        }
-        
         public static PlayerData GetPlayerData()
         {
             return GetResource<PlayerData>("PlayerData");
         }
-        
+
+        public static SnakeHeadView GetSnakeHeadView()
+        {
+            return GetResource<SnakeHeadView>("Head");
+        }
+
         public static SnakePartView GetSnakePartView(string path)
         {
             return GetResource<SnakePartView>(path);
         }
         
+        public static PlayerAimView GetPlayerAimView()
+        {
+            return GetResource<PlayerAimView>("PlayerAim");
+        }
+
         public static T GetPopup<T, U>() where T : PopupView<U> where U : PopupModel
         {
             if (Assets.ContainsKey(typeof(T)))
