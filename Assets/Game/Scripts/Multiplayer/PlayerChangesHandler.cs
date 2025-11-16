@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Colyseus.Schema;
 using Game.Scripts.Gameplay.ECS.Common;
@@ -8,18 +9,21 @@ using Voody.UniLeo;
 
 namespace Game.Scripts.Multiplayer
 {
-  public class PlayerChangesHandler
+  public class PlayerChangesHandler : IDisposable
   {
     private readonly string _playerId;
+    private readonly Player _player;
     private List<float> _receiveTimeIntervals = new (){0,0,0,0,0};
     private float _lastReceivedTime;
 
-    public PlayerChangesHandler(string playerId)
+    public PlayerChangesHandler(string playerId, Player player)
     {
       _playerId = playerId;
+      _player = player;
+      player.OnChange += OnPlayerChanged;
     }
 
-    public void OnPlayerChanged(List<DataChange> changes)
+    private void OnPlayerChanged(List<DataChange> changes)
     {
       var interval = Time.time - _lastReceivedTime;
       _lastReceivedTime = Time.time;
@@ -30,6 +34,11 @@ namespace Game.Scripts.Multiplayer
       changeEvent.Id = _playerId;
       changeEvent.Changes = changes;
       changeEvent.AverageInterval = _receiveTimeIntervals.Sum() / _receiveTimeIntervals.Count;
+    }
+
+    public void Dispose()
+    {
+      _player.OnChange -= OnPlayerChanged;
     }
   }
 }

@@ -12,8 +12,9 @@ namespace Game.Scripts.Gameplay.ECS.Tail
     {
       _systems = new EcsSystems(_world);
       _systems
-        .Add(new TailHistorySystem())
-        .Add(new TailMoveSystem())
+        .Add(new TailLengthSystem())
+        .Add(new TailWriterSystem())
+        .Add(new TailReaderSystem())
         .Init();
     }
 

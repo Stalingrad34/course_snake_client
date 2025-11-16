@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Scripts.Gameplay.Data;
+using Game.Scripts.Gameplay.Data.Units;
 using Game.Scripts.Infrastructure.Custom;
 using Game.Scripts.Multiplayer;
 using Game.Scripts.UI;
@@ -19,6 +21,26 @@ namespace Game.Scripts.Infrastructure
         public static MultiplayerManager GetMultiplayerManager()
         {
             return GetResource<MultiplayerManager>($"{nameof(MultiplayerManager)}");
+        }
+
+        public static SnakeHeadView GetSnakeHeadView()
+        {
+            return GetResource<SnakeHeadView>("Head");
+        }
+        
+        public static SnakeTailView GetSnakeTailView()
+        {
+            return GetResource<SnakeTailView>("Tail");
+        }
+        
+        public static PlayerData GetPlayerData()
+        {
+            return GetResource<PlayerData>("PlayerData");
+        }
+        
+        public static SnakePartView GetSnakePartView(string path)
+        {
+            return GetResource<SnakePartView>(path);
         }
         
         public static T GetPopup<T, U>() where T : PopupView<U> where U : PopupModel

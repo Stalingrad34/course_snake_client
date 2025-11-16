@@ -7,7 +7,7 @@ using Voody.UniLeo;
 
 namespace Game.Scripts.Gameplay.ECS.Converters
 {
-  public class HealthConverter : MonoBehaviour, ISnakeData, IConvertToEntity
+  public class HealthConverter : MonoBehaviour, ISnakeHeadSetup, IConvertToEntity
   {
     [SerializeField] private Image progressBar;
     [SerializeField] private bool lookAt;
@@ -22,7 +22,7 @@ namespace Game.Scripts.Gameplay.ECS.Converters
       health.LookAt = lookAt;
     }
 
-    public void Setup(SnakeData data)
+    public void Setup(SnakeHeadData data)
     {
       
     }

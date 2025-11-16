@@ -13,6 +13,7 @@ namespace Game.Scripts.Gameplay.ECS.Rotate
       _systems = new EcsSystems(_world);
       _systems
         .Add(new ControlRotateSystem())
+        .Add(new ChangesRotateSystem())
         .Add(new RotateSystem())
         .Init();
     }

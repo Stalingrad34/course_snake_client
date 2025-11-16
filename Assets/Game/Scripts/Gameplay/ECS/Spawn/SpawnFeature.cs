@@ -15,10 +15,10 @@ namespace Game.Scripts.Gameplay.ECS.Spawn
     {
       _systems = new EcsSystems(_world);
       _systems
-        .Add(new SpawnPlayerSystem())
-        .Add(new SpawnEnemySystem())
-        .OneFrame<SpawnPlayerEvent>()
-        .OneFrame<SpawnEnemyEvent>()
+        .Add(new SpawnSnakeHeadSystem())
+        .Add(new SpawnSnakePartSystem())
+        .OneFrame<SpawnSnakeHeadEvent>()
+        .OneFrame<SpawnSnakePartEvent>()
         .Inject(_mainCamera)
         .Init();
     }

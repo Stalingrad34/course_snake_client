@@ -22,25 +22,16 @@ namespace Game.Scripts.Infrastructure.States
       _multiplayer.OnPlayerConnected += OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected += OnPlayerDisconnected;
       _multiplayer.OnRestartMessageReceived += OnRestartMessageReceived;
-      _multiplayer.Connect().Forget();
+      _multiplayer.Connect(AssetProvider.GetPlayerData()).Forget();
     }
 
     private void OnPlayerConnected(string key, Player player)
     {
-      if (_multiplayer.IsPlayer(key))
-      {
-        ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnPlayerEvent>();
-        spawnEvent.Id = key;
-        spawnEvent.Position = new Vector3(player.pX, player.pY, player.pZ);
-        spawnEvent.Player = player;
-      }
-      else
-      {
-        ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnEnemyEvent>();
-        spawnEvent.Id = key;
-        spawnEvent.Position = new Vector3(player.pX, player.pY, player.pZ);
-        spawnEvent.Player = player;
-      }
+      ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnSnakeHeadEvent>();
+      spawnEvent.Id = key;
+      spawnEvent.Position = new Vector3(player.pX, 0, player.pZ);
+      spawnEvent.Player = player;
+      spawnEvent.IsPlayer = _multiplayer.IsPlayer(key);
     }
 
     private void OnPlayerDisconnected(string key, Player player)

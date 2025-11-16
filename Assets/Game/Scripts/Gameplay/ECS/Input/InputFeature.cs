@@ -16,6 +16,7 @@ namespace Game.Scripts.Gameplay.ECS.Input
       _systems
         .Add(new MouseSystem())
         .Add(new DebugMouseSystem())
+        .Add(new DebugAddPartSystem())
         .Inject(_camera)
         .Init();
     }
