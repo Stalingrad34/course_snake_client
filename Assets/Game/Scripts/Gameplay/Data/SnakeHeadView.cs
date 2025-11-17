@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Data
 {
   public class SnakeHeadView : MonoBehaviour
   {
     [SerializeField] private Transform cameraPoint;
+    [SerializeField] private List<MeshRenderer> materials;
     
     public void SetCamera(Camera gameCamera)
     {
@@ -19,6 +21,11 @@ namespace Game.Scripts.Gameplay.Data
       {
         setupComponent.Setup(data);
       }
+    }
+
+    public void SetColor(Color color)
+    {
+      materials.ForEach(m => m.material.SetColor("_BaseColor", color));
     }
   }
 }

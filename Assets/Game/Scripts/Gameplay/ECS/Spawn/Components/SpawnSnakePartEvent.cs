@@ -8,5 +8,6 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Components
     public string Prefab;
     public Vector3 Position;
     public SnakePartData PartData;
+    public int ColorIdx;
   }
 }

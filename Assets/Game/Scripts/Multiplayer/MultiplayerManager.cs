@@ -33,7 +33,8 @@ namespace Game.Scripts.Multiplayer
       var data = new Dictionary<string, object>()
       {
         {"speed", playerData.Speed},
-        {"parts", playerData.Parts},
+        {"parts", 1},
+        {"colorsLength", playerData.Colors.Length},
       };
       
       _room = await client.JoinOrCreate<State>("state_handler", data);

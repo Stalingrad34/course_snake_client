@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e40f5bda7254c6aa14fdc0d504b3731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.Scripts.Gameplay.Data.SnakePartView
+  materials:
+  - {fileID: 3536336009839702561}
 --- !u!114 &-5827186299046823744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +166,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f36cd16b6c365f4cad37fb84deec7ec, type: 3}
+--- !u!23 &3536336009839702561 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4558906730386509825, guid: 6f36cd16b6c365f4cad37fb84deec7ec, type: 3}
+  m_PrefabInstance: {fileID: 8189818628854930910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8512557404972071477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6f36cd16b6c365f4cad37fb84deec7ec, type: 3}

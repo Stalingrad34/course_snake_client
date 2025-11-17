@@ -14,6 +14,7 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
       {
         var partView = AssetProvider.GetSnakePartView(_eventFilter.Get1(i).Prefab);
         partView.Setup(_eventFilter.Get1(i).PartData);
+        partView.SetColor(AssetProvider.GetPlayerData().Colors[_eventFilter.Get1(i).ColorIdx]);
         partView.transform.position = _eventFilter.Get1(i).Position;
       }
     }

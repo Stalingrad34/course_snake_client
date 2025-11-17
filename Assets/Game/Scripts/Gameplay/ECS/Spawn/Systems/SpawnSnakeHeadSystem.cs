@@ -1,5 +1,4 @@
 ﻿using Game.Scripts.Gameplay.Data;
-using Game.Scripts.Gameplay.ECS.Converters;
 using Game.Scripts.Gameplay.ECS.Spawn.Components;
 using Game.Scripts.Infrastructure;
 using Leopotam.Ecs;
@@ -25,6 +24,7 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
         
         var head = AssetProvider.GetSnakeHeadView();
         head.Setup(headData);
+        head.SetColor(AssetProvider.GetPlayerData().Colors[_eventFilter.Get1(i).ColorIdx]);
         head.transform.position = _eventFilter.Get1(i).Position;
 
         if (_eventFilter.Get1(i).IsPlayer)
@@ -35,26 +35,19 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
           aim.transform.position = _eventFilter.Get1(i).Position;
         }
 
-        CreateSpawnSnakePartEvent(headData.Id, _eventFilter.Get1(i).Position, "Tail");
-
         for (int j = 0; j < _eventFilter.Get1(i).Player.p; j++)
         {
-          CreateSpawnSnakePartEvent(headData.Id, _eventFilter.Get1(i).Position, "Part");
+          var partData = new SnakePartData()
+          {
+            HeadId = headData.Id
+          };
+          ref var spawnPartEvent = ref _world.NewEntity().Get<SpawnSnakePartEvent>();
+          spawnPartEvent.Position = _eventFilter.Get1(i).Position;
+          spawnPartEvent.Prefab = "Part";
+          spawnPartEvent.PartData = partData;
+          spawnPartEvent.ColorIdx = _eventFilter.Get1(i).ColorIdx;
         }
       }
-    }
-
-    private void CreateSpawnSnakePartEvent(string headId, Vector3 position, string prefab)
-    {
-      var tailData = new SnakePartData()
-      {
-        HeadId = headId
-      };
-        
-      ref var tailSpawn = ref _world.NewEntity().Get<SpawnSnakePartEvent>();
-      tailSpawn.Prefab = prefab;
-      tailSpawn.Position = position;
-      tailSpawn.PartData = tailData;
     }
   }
 }

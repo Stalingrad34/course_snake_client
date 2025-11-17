@@ -7,5 +7,6 @@ namespace Game.Scripts.Gameplay.Data.Units
   {
     public float Speed;
     public int Parts;
+    public Color[] Colors;
   }
 }

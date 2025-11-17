@@ -32,6 +32,7 @@ namespace Game.Scripts.Infrastructure.States
       spawnEvent.Position = new Vector3(player.pX, 0, player.pZ);
       spawnEvent.Player = player;
       spawnEvent.IsPlayer = _multiplayer.IsPlayer(key);
+      spawnEvent.ColorIdx = player.c;
     }
 
     private void OnPlayerDisconnected(string key, Player player)
