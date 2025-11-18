@@ -33,7 +33,6 @@ namespace Game.Scripts.Multiplayer
       ref var changeEvent = ref WorldHandler.GetWorld().NewEntity().Get<PlayerChangeEvent>();
       changeEvent.Id = _playerId;
       changeEvent.Changes = changes;
-      changeEvent.AverageInterval = _receiveTimeIntervals.Sum() / _receiveTimeIntervals.Count;
     }
 
     public void Dispose()

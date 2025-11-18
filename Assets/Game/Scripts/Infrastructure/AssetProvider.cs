@@ -42,6 +42,11 @@ namespace Game.Scripts.Infrastructure
         {
             return GetResource<PlayerAimView>("PlayerAim");
         }
+        
+        public static AppleView GetAppleView()
+        {
+            return GetResource<AppleView>("Apple");
+        }
 
         public static T GetPopup<T, U>() where T : PopupView<U> where U : PopupModel
         {

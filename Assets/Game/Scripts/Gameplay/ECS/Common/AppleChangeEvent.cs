@@ -3,9 +3,9 @@ using Colyseus.Schema;
 
 namespace Game.Scripts.Gameplay.ECS.Common
 {
-  public struct PlayerChangeEvent
+  public struct AppleChangeEvent
   {
-    public string Id;
+    public int Id;
     public List<DataChange> Changes;
   }
 }

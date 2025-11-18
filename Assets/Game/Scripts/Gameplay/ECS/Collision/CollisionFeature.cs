@@ -1,9 +1,9 @@
-﻿using Game.Scripts.Gameplay.ECS.SendMessage.Systems;
+﻿using Game.Scripts.Gameplay.ECS.Collision.Systems;
 using Leopotam.Ecs;
 
-namespace Game.Scripts.Gameplay.ECS.SendMessage
+namespace Game.Scripts.Gameplay.ECS.Collision
 {
-  public class SendMessageFeature : IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
+  public class CollisionFeature : IEcsInitSystem, IEcsRunSystem, IEcsDestroySystem
   {
     private EcsWorld _world;
     private EcsSystems _systems;
@@ -12,8 +12,7 @@ namespace Game.Scripts.Gameplay.ECS.SendMessage
     {
       _systems = new EcsSystems(_world);
       _systems
-        .Add(new SendMoveSystem())
-        .Add(new SendMessageSystem())
+        .Add(new SphereCollisionSystem())
         .Init();
     }
 

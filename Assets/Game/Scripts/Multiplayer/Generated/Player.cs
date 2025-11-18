@@ -15,12 +15,15 @@ public partial class Player : Schema {
 	public ushort p = default(ushort);
 
 	[Type(2, "uint16")]
+	public ushort s = default(ushort);
+
+	[Type(3, "uint16")]
 	public ushort c = default(ushort);
 
-	[Type(3, "number")]
+	[Type(4, "number")]
 	public float pX = default(float);
 
-	[Type(4, "number")]
+	[Type(5, "number")]
 	public float pZ = default(float);
 }
 

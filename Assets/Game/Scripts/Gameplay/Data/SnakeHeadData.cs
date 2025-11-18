@@ -4,5 +4,6 @@
   {
     public string Id;
     public float Speed;
+    public float CollectRadius;
   }
 }

@@ -17,8 +17,10 @@ namespace Game.Scripts.Gameplay.ECS.Spawn
       _systems
         .Add(new SpawnSnakeHeadSystem())
         .Add(new SpawnSnakePartSystem())
+        .Add(new SpawnAppleSystem())
         .OneFrame<SpawnSnakeHeadEvent>()
         .OneFrame<SpawnSnakePartEvent>()
+        .OneFrame<SpawnAppleEvent>()
         .Inject(_mainCamera)
         .Init();
     }

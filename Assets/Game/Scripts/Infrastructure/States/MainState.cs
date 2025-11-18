@@ -21,7 +21,7 @@ namespace Game.Scripts.Infrastructure.States
       _multiplayer = ServiceProvider.Get<MultiplayerManager>();
       _multiplayer.OnPlayerConnected += OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected += OnPlayerDisconnected;
-      _multiplayer.OnRestartMessageReceived += OnRestartMessageReceived;
+      _multiplayer.OnAppleCreated += OnAppleCreated;
       _multiplayer.Connect(AssetProvider.GetPlayerData()).Forget();
     }
 
@@ -39,17 +39,17 @@ namespace Game.Scripts.Infrastructure.States
     {
       
     }
-
-    private void OnRestartMessageReceived(RestartInfo restartInfo)
+    
+    private void OnAppleCreated(Apple data)
     {
-      WorldHandler.GetWorld().NewEntity().Get<RestartEvent>().RestartInfo = restartInfo;
+      ref var spawnEvent = ref WorldHandler.GetWorld().NewEntity().Get<SpawnAppleEvent>();
+      spawnEvent.Data = data;
     }
 
     public void Exit()
     {
       _multiplayer.OnPlayerConnected -= OnPlayerConnected;
       _multiplayer.OnPlayerDisconnected -= OnPlayerDisconnected;
-      _multiplayer.OnRestartMessageReceived -= OnRestartMessageReceived;
       _multiplayer.Disconnect();
     }
   }

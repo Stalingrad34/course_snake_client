@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Gameplay.Data;
+using Game.Scripts.Gameplay.ECS.Collision.Converters;
 using Game.Scripts.Gameplay.ECS.Spawn.Components;
 using Game.Scripts.Infrastructure;
 using Leopotam.Ecs;
@@ -19,21 +20,26 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
         var headData = new SnakeHeadData()
         {
           Id = _eventFilter.Get1(i).Id,
-          Speed = _eventFilter.Get1(i).Player.speed
+          Speed = _eventFilter.Get1(i).Player.speed,
+          CollectRadius = 0.5f
         };
         
         var head = AssetProvider.GetSnakeHeadView();
-        head.Setup(headData);
-        head.SetColor(AssetProvider.GetPlayerData().Colors[_eventFilter.Get1(i).ColorIdx]);
-        head.transform.position = _eventFilter.Get1(i).Position;
-
+        
         if (_eventFilter.Get1(i).IsPlayer)
         {
+          head.gameObject.AddComponent<SphereCollisionConverter>();
           head.SetCamera(_mainCamera);
           var aim = AssetProvider.GetPlayerAimView();
           aim.Setup(headData);
           aim.transform.position = _eventFilter.Get1(i).Position;
+          aim.transform.rotation = Quaternion.identity;
         }
+        
+        head.Setup(headData);
+        head.SetColor(AssetProvider.GetPlayerData().Colors[_eventFilter.Get1(i).ColorIdx]);
+        head.transform.position = _eventFilter.Get1(i).Position;
+        head.transform.rotation = Quaternion.identity;
 
         for (int j = 0; j < _eventFilter.Get1(i).Player.p; j++)
         {

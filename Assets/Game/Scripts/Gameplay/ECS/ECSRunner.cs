@@ -1,13 +1,11 @@
 ﻿using System;
 using Core.Scripts.Loggers;
+using Game.Scripts.Gameplay.ECS.Collect;
+using Game.Scripts.Gameplay.ECS.Collision;
+using Game.Scripts.Gameplay.ECS.Collision.Components;
 using Game.Scripts.Gameplay.ECS.Common;
-using Game.Scripts.Gameplay.ECS.Damage;
-using Game.Scripts.Gameplay.ECS.Damage.Components;
-using Game.Scripts.Gameplay.ECS.Destroy;
-using Game.Scripts.Gameplay.ECS.Health;
 using Game.Scripts.Gameplay.ECS.Input;
 using Game.Scripts.Gameplay.ECS.Move;
-using Game.Scripts.Gameplay.ECS.Rigidbody;
 using Game.Scripts.Gameplay.ECS.Rotate;
 using Game.Scripts.Gameplay.ECS.SendMessage;
 using Game.Scripts.Gameplay.ECS.Spawn;
@@ -44,23 +42,17 @@ namespace Game.Scripts.Gameplay.ECS
         .Add(new MoveFeature())
         .Add(new RotateFeature())
         .Add(new TailFeature())
-        .Add(new DamageFeature())
-        .Add(new HealthFeature())
+        .Add(new CollectFeature())
         .Add(new SendMessageFeature())
-        .Add(new DestroyFeature())
         .OneFrame<PlayerChangeEvent>()
-        .OneFrame<DamageEvent>()
-        .OneFrame<RestartEvent>()
-        .OneFrame<OnCollisionEnterEvent>()
-        .OneFrame<OnCollisionStayEvent>()
-        .OneFrame<OnCollisionExitEvent>()
+        .OneFrame<CollisionEvent>()
         .Inject(mainCamera)
         .ConvertScene()
         .Init();
 
       _physicSystems = new EcsSystems(_world);
       _physicSystems
-        .Add(new RigidbodyFeature())
+        .Add(new CollisionFeature())
         .Init();
 
 #if UNITY_EDITOR
