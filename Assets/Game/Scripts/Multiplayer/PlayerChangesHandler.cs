@@ -32,6 +32,7 @@ namespace Game.Scripts.Multiplayer
       
       ref var changeEvent = ref WorldHandler.GetWorld().NewEntity().Get<PlayerChangeEvent>();
       changeEvent.Id = _playerId;
+      changeEvent.Player = _player;
       changeEvent.Changes = changes;
     }
 

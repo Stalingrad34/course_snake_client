@@ -36,12 +36,12 @@ namespace Game.Scripts.Gameplay.ECS.Spawn.Systems
           aim.transform.rotation = Quaternion.identity;
         }
         
-        head.Setup(headData);
+        head.Setup(headData, _eventFilter.Get1(i).Player);
         head.SetColor(AssetProvider.GetPlayerData().Colors[_eventFilter.Get1(i).ColorIdx]);
         head.transform.position = _eventFilter.Get1(i).Position;
         head.transform.rotation = Quaternion.identity;
 
-        for (int j = 0; j < _eventFilter.Get1(i).Player.p; j++)
+        for (int j = 0; j < _eventFilter.Get1(i).Player.parts; j++)
         {
           var partData = new SnakePartData()
           {

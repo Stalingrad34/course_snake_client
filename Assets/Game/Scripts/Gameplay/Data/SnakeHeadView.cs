@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Game.Scripts.Gameplay.Data
@@ -7,6 +8,7 @@ namespace Game.Scripts.Gameplay.Data
   {
     [SerializeField] private Transform cameraPoint;
     [SerializeField] private List<MeshRenderer> materials;
+    [SerializeField] private TextMeshPro nickName;
     
     public void SetCamera(Camera gameCamera)
     {
@@ -14,8 +16,9 @@ namespace Game.Scripts.Gameplay.Data
       gameCamera.transform.localPosition = Vector3.up * gameCamera.transform.position.y;
     }
     
-    public void Setup(SnakeHeadData data)
+    public void Setup(SnakeHeadData data, Player player)
     {
+      nickName.text = player.nickname;
       var setupComponents = gameObject.GetComponents<ISnakeHeadSetup>();
       foreach (var setupComponent in setupComponents)
       {

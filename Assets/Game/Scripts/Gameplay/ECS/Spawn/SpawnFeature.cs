@@ -15,6 +15,7 @@ namespace Game.Scripts.Gameplay.ECS.Spawn
     {
       _systems = new EcsSystems(_world);
       _systems
+        .Add(new ChangesSpawnPartSystem())
         .Add(new SpawnSnakeHeadSystem())
         .Add(new SpawnSnakePartSystem())
         .Add(new SpawnAppleSystem())

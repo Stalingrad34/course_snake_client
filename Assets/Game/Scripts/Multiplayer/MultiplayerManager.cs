@@ -54,6 +54,11 @@ namespace Game.Scripts.Multiplayer
       _room.Send(key, data);
     }
     
+    public void SendMessage(string key, string data)
+    {
+      _room.Send(key, data);
+    }
+    
     private void OnPlayerAdd(string key, Player player)
     {
       var handler = new PlayerChangesHandler(key, player);
